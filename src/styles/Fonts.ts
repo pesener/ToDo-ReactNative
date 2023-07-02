@@ -1,5 +1,5 @@
-const Fonts ={
-defaultRegularFontFamily:'nunito-regular'
+const Fonts = {
+  defaultRegularFontFamily: 'nunito-regular',
 };
 
 export default Fonts;

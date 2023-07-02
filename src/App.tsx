@@ -13,7 +13,7 @@ const App = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>ToDoList!</Text>
-      <FloatingButton></FloatingButton>
+      <FloatingButton onPress={handleModalVisible}></FloatingButton>
       <AddTaskModal isVisible={modalVisible}></AddTaskModal>
     </View>
   );

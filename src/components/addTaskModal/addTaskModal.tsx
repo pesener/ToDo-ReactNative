@@ -1,13 +1,13 @@
 import React, {FC} from 'react';
 import {Text, View} from 'react-native';
 import styles from './addTaskModal.style';
-import {Modal} from 'react-native-modal';
+import Modal from 'react-native-modal';
 interface IModalProps {
-  isVisible: Boolean;
+  isVisible: boolean;
 }
 const AddTaskModal: FC<IModalProps> = ({isVisible}) => {
   return (
-    <Modal isVisible={isVisible}>
+    <Modal isVisible={isVisible} style={styles.modalContainer}>
       {' '}
       <View>
         <Text></Text>
