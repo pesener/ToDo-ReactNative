@@ -1,20 +1,38 @@
 import React, {useState} from 'react';
-import {Text, View, StyleSheet} from 'react-native';
+import {Text, View, StyleSheet, FlatList} from 'react-native';
 import Colors from './styles/Colors';
 import Fonts from './styles/Fonts';
 import FloatingButton from './components/floatingButton/floatingButton';
 import AddTaskModal from './components/addTaskModal/addTaskModal';
+import TaskCard from './components/TaskCard/TaskCard';
 
 const App = () => {
   const [modalVisible, setModalVisible] = useState<boolean>(false);
+  const [toDoList, setToDoList] = useState<any>([]);
   function handleModalVisible() {
     setModalVisible(!modalVisible);
   }
+  function addTask(taskContent: string) {
+    const newTask = {
+      id: toDoList.length + 1,
+      task: taskContent,
+      isCompleted: false,
+    };
+    setToDoList((oldTasks: any) => [...oldTasks, newTask]);
+  }
+  const renderToDoList = ({item}: any) => (
+    <TaskCard item={item} isCompleted={item.isCompleted} />
+  );
   return (
     <View style={styles.container}>
       <Text style={styles.title}>ToDoList!</Text>
-      <FloatingButton onPress={handleModalVisible}></FloatingButton>
-      <AddTaskModal isVisible={modalVisible}></AddTaskModal>
+      <FloatingButton onPress={handleModalVisible} />
+      <AddTaskModal
+        isVisible={modalVisible}
+        onClose={handleModalVisible}
+        onAddTask={addTask}
+      />
+      <FlatList data={toDoList} renderItem={renderToDoList} />
     </View>
   );
 };
