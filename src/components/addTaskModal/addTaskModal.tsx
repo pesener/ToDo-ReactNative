@@ -13,6 +13,7 @@ const AddTaskModal: FC<IModalProps> = ({isVisible, onClose, onAddTask}) => {
     if (taskInputValue) {
       onAddTask(taskInputValue);
     }
+    setTaskInputValue('');
   }
   return (
     <Modal
@@ -26,7 +27,8 @@ const AddTaskModal: FC<IModalProps> = ({isVisible, onClose, onAddTask}) => {
           placeholder=" Task..."
           placeholderTextColor="white"
           multiline={true}
-          onChangeText={t => setTaskInputValue(t)}
+          onChangeText={(t: string) => setTaskInputValue(t)}
+          value={taskInputValue}
         />
         <TouchableWithoutFeedback onPress={handleAddTask}>
           <View style={styles.buttonContainer}>

@@ -2,11 +2,11 @@ import React, {FC} from 'react';
 import {Text, View, TouchableWithoutFeedback} from 'react-native';
 import styles from './floatingButton.style';
 interface IButtonProps {
-  onPress: () => void;
+  onPressko: () => void;
 }
-const FloatingButton: FC<IButtonProps> = ({onPress}) => {
+const FloatingButton: FC<IButtonProps> = ({onPressko}) => {
   return (
-    <TouchableWithoutFeedback onPress={onPress}>
+    <TouchableWithoutFeedback onPress={onPressko}>
       <View style={styles.container}>
         <Text style={styles.icon}>+</Text>
       </View>

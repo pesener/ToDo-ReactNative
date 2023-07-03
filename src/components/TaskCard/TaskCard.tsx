@@ -1,19 +1,24 @@
 import React, {FC} from 'react';
-import {Text, View} from 'react-native';
+import {Text, View, TouchableWithoutFeedback} from 'react-native';
 import styles from './TaskCard.style';
 interface ICardProps {
   isCompleted: boolean;
   item: any;
+  onDelete: () => void;
 }
-const TaskCard: FC<ICardProps> = ({isCompleted, item}) => {
+const TaskCard: FC<ICardProps> = ({isCompleted, item, onDelete}) => {
   return isCompleted ? (
-    <View style={styles.completedContainer}>
-      <Text style={styles.completedText}>{item.task}</Text>
-    </View>
+    <TouchableWithoutFeedback onLongPress={onDelete}>
+      <View style={styles.completedContainer}>
+        <Text style={styles.completedText}>{item.task}</Text>
+      </View>
+    </TouchableWithoutFeedback>
   ) : (
-    <View style={styles.container}>
-      <Text style={styles.taskText}>{item.task}</Text>
-    </View>
+    <TouchableWithoutFeedback onLongPress={onDelete}>
+      <View style={styles.container}>
+        <Text style={styles.taskText}>{item.task}</Text>
+      </View>
+    </TouchableWithoutFeedback>
   );
 };
 
